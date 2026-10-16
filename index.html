@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>For Omonigho 💗</title>
+</head>
+<body>
+
+  <!-- Welcome screen -->
+  <section class="welcome" id="welcome">
+    <div class="heart">💗</div>
+
+    <p>A little something for someone special...</p>
+
+    <h1>Omonigho</h1>
+
+    <p>
+      I made something for you.<br>
+      And yes, you're going to have to click it.
+    </p>
+
+    <button onclick="openLetter()">
+      Open your surprise 💌
+    </button>
+  </section>
+
+  <!-- Love letter -->
+  <main class="letter-page" id="letterPage">
+
+    <div class="heart">💌</div>
+
+    <h1>For my babe</h1>
+
+    <p>Made with love, just for you.</p>
+
+    <div class="letter">
+
+      <h2>My dearest Omonigho,</h2>
+
+      <p>
+        I wanted to make you something a little different.
+        Something you could open and smile at, even when
+        I'm not right there beside you.
+      </p>
+
+      <p>
+        You make ordinary conversations feel special.
+        You make me smile at my phone like a complete
+        fool, and honestly, I wouldn't have it any other way.
+      </p>
+
+      <p>
+        I hope you always remember how special you are
+        to me. I love having you in my life, and I'm
+        grateful for every little moment we share.
+      </p>
+
+      <p>
+        This little website is just one tiny way of
+        saying something I wish I could tell you a
+        thousand times.
+      </p>
+
+      <p class="signature">
+        I love you, my babe. ❤️
+      </p>
+
+    </div>
+
+    <!-- Secret gift -->
+    <div class="gift">
+
+      <h2>Wait... there's one more thing.</h2>
+
+      <p>Tap the little gift. I promise it's cute.</p>
+
+      <div
+        class="gift-box"
+        onclick="openGift()"
+        role="button"
+        tabindex="0"
+        aria-label="Open your surprise gift"
+        onkeydown="if(event.key === 'Enter' || event.key === ' ') openGift()"
+      >
+        🎁
+      </div>
+
+      <div id="secret">
+        <div style="font-size: 45px;">💖</div>
+
+        <p class="secret-text">
+          If I had to choose all over again,
+          I'd still choose you, Omonigho.
+        </p>
+
+        <p style="margin-top: 15px;">
+          Yours, always.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    function openLetter() {
+      document.getElementById("welcome").style.display = "none";
+
+      document.getElementById("letterPage").style.display = "block";
+
+      window.scrollTo(0, 0);
+
+      // Start the floating hearts
+      setInterval(createHeart, 700);
+    }
+
+    function openGift() {
+      const secret = document.getElementById("secret");
+
+      secret.style.display = "block";
+
+      // A little heart explosion
+      for (let i = 0; i < 15; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+
+      heart.className = "floating-heart";
+
+      const hearts = ["💗", "💕", "💖", "💘", "♡"];
+
+      heart.textContent =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      heart.style.fontSize =
+        (Math.random() * 20 + 15) + "px";
+
+      heart.style.animationDuration =
+        (Math.random() * 3 + 4) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
+    }
+  </script>
+
+</body>
+</html>
